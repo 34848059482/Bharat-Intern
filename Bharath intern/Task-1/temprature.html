@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cont {
+            width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label,
+        input,
+        button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            height: 30px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            height: 40px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .inputt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inputt input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <h2>Temperature Converter</h2>
+        <div class="inputt">
+            <input type="text" id="inputTemp" placeholder="Enter temperature" />
+            <button onclick="convertToCelsius()">To Fahrenheit</button>
+            <button onclick="convertToFahrenheit()">To Celsius</button>
+        </div>
+        <div id="outputDiv"></div>
+    </div>
+
+    <script>
+        // Convert the temperature from Celsius to Fahrenheit
+        function convertToCelsius() {
+            var input = document.getElementById("inputTemp").value;
+            var output = document.getElementById("outputDiv");
+
+            // Check if the input is a valid number
+            if (isNaN(input)) {
+                output.innerHTML = "Invalid input";
+                return;
+            }
+            var celsius = parseFloat(input);
+            var fahrenheit = (celsius * 9 / 5) + 32;
+
+            // Display the converted temperature
+            output.innerHTML = celsius + " degrees Celsius is equal to " + fahrenheit.toFixed(2) + " degrees Fahrenheit.";
+        }
+        // Convert the temperature from Fahrenheit to Celsius
+        function convertToFahrenheit() {
+            var input = document.getElementById("inputTemp").value;
+            var output = document.getElementById("outputDiv");
+            if (isNaN(input)) {
+                output.innerHTML = "Invalid input";
+                return;
+            }
+            var fahrenheit = parseFloat(input);
+            var celsius = (fahrenheit - 32) * 5 / 9;
+            output.innerHTML = fahrenheit + " degrees Fahrenheit is equal to " + celsius.toFixed(2) + " degrees Celsius.";
+        }
+    </script>
+</body>
+
+</html>
